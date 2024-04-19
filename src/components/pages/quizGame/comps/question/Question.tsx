@@ -17,7 +17,8 @@ const Question: FC = (): ReactElement => {
   const askedHelp = quizContext?.state.askedHelp;
   const limitHelp = 3;
   const helpDisabled =
-    helpChances && helpChances <= 0 ? 'help-disabled disabled' : null;
+    helpChances && helpChances <= 0 ? 'help-disabled disabled' : null;  
+    console.log(quizContext, '****contex')
 
   const handleSelectedAnswer = ({ value }: { value: string }) => {
     dispatch &&
@@ -38,7 +39,7 @@ const Question: FC = (): ReactElement => {
       }, 3000);
     }
   };
-  console.log('helpCancaes----->', helpChances);
+
   const handleNextQuestion = () => {
     if (selectedAnswer) {
       dispatch &&
@@ -82,12 +83,13 @@ const Question: FC = (): ReactElement => {
             </span>
           </div>
 
-          <div
-            className="next-btn action-btn cursor-pointer"
+          <button
+           disabled={quizContext?.state.isNext}
+            className="next-btn action-btn"
             onClick={handleNextQuestion}
           >
             <span className="text-center leading-[2.8rem]">Next Question</span>
-          </div>
+          </button>
         </div>
       </div>
       {showToast && <ToastWarning message={`help has run out !!!`} />}

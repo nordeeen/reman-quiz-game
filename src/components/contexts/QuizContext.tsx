@@ -1,6 +1,6 @@
-import { ReactNode, createContext, useReducer } from 'react';
-import { Questions as questions } from '../questionDatas';
-import shuffleAnswers from '../helpers/suffleAnswers';
+import { ReactNode, createContext, useReducer } from "react";
+import { Questions as questions } from "../questionDatas";
+import shuffleAnswers from "../helpers/suffleAnswers";
 
 export enum allowedActions {
   NEXT_QUESTION,
@@ -35,6 +35,7 @@ interface StateInterface {
   life: number;
   score: number;
   gameOver: boolean;
+  isNext: boolean;
 }
 
 const initialState: StateInterface = {
@@ -52,6 +53,7 @@ const initialState: StateInterface = {
   life: 3,
   score: 0,
   gameOver: false,
+  isNext: true,
 };
 
 const getScore = () => {
@@ -64,7 +66,6 @@ function QuizReducer(state: StateInterface, action: Action) {
     case allowedActions.NEXT_QUESTION: {
       const gameOver =
         state.questions.length - 1 === state.currentQuestionIndex;
-
       const currentQuestionIndex = gameOver
         ? state.currentQuestionIndex
         : state.currentQuestionIndex + 1;
@@ -80,6 +81,7 @@ function QuizReducer(state: StateInterface, action: Action) {
       const correctAnswer = nextQuestion?.correctAnswer;
 
       const askedHelp = false;
+      const isNext = true;
 
       return {
         ...state,
@@ -89,6 +91,7 @@ function QuizReducer(state: StateInterface, action: Action) {
         selectedAnswer: null,
         askedHelp,
         gameOver,
+        isNext,
       };
     }
 
@@ -112,6 +115,7 @@ function QuizReducer(state: StateInterface, action: Action) {
         selectedAnswer
           ? state.life - 1
           : state.life;
+      const isNext = false;
 
       const gameOver = life <= 0 ? true : state.gameOver;
 
@@ -123,6 +127,7 @@ function QuizReducer(state: StateInterface, action: Action) {
         score,
         life,
         gameOver,
+        isNext,
       };
     }
 
