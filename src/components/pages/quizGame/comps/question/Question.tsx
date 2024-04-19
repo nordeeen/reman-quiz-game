@@ -13,7 +13,8 @@ const Question: FC = (): ReactElement => {
   const helpChances = quizContext?.state.helpChances;
   const askedHelp = quizContext?.state.askedHelp;
   const helpDisabled =
-    helpChances && helpChances <= 0 ? 'help-disabled disabled' : null;
+    helpChances && helpChances <= 0 ? 'help-disabled disabled' : null;  
+    console.log(quizContext, '****contex')
 
   const handleSelectedAnswer = ({ value }: { value: string }) => {
     dispatch &&
@@ -27,16 +28,12 @@ const Question: FC = (): ReactElement => {
     dispatch && dispatch({ type: allowedActions.ASK_HELP, payload: null });
   };
 
-  const handleNextQuestion = () => {
-    if (selectedAnswer) {
-      dispatch &&
-        dispatch({
-          type: allowedActions.NEXT_QUESTION,
-          payload: null,
-        });
-      console.log('lock the answer !!!');
-    }
-  };
+  const handleNextQuestion = () =>
+    dispatch &&
+    dispatch({
+      type: allowedActions.NEXT_QUESTION,
+      payload: null,
+    });
 
   return (
     <div className="flex justify-center">
@@ -65,12 +62,13 @@ const Question: FC = (): ReactElement => {
             <span className="help-chances">{helpChances}</span>
           </div>
 
-          <div
-            className="next-btn action-btn cursor-pointer"
+          <button
+           disabled={quizContext?.state.isNext}
+            className="next-btn action-btn"
             onClick={handleNextQuestion}
           >
             <span className="text-center leading-[2.8rem]">Next Question</span>
-          </div>
+          </button>
         </div>
       </div>
     </div>

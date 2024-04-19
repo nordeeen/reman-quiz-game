@@ -18,7 +18,6 @@ const Result: FC = (): ReactElement => {
   const correctAnswer = quizContext!.state.assertedAnswerCount;
   const score = quizContext?.state.score;
   const namaUser = localStorage.getItem('user');
-  console.log('namaUser:', namaUser);
 
   const calcAssertPercentage = () => {
     const assertPercentage = (correctAnswer * 100) / totalQuestions;
