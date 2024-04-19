@@ -2,9 +2,9 @@ import { HeartFill, Heart, StarFill, Star } from 'react-bootstrap-icons';
 import songWinner from '../assets/audios/songWinner.mp3';
 
 const audioWin = new Audio(songWinner);
-export const value = 685;
+export const countScore = 1000;
 export const playSongIfScoreMatches = (score: number) => {
-  if (score >= value) {
+  if (score >= countScore) {
     audioWin.play();
   }
   return score;

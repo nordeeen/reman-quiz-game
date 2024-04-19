@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { ReactNode, createContext, useReducer } from "react";
 import { Questions as questions } from "../questionDatas";
 import shuffleAnswers from "../helpers/suffleAnswers";
@@ -57,7 +58,7 @@ const initialState: StateInterface = {
 };
 
 const getScore = () => {
-  const score: number = Math.floor(Math.random() * (200 - 100) + 100);
+  const score: number = Math.floor(Math.random() * (100 - 100) + 100);
   return score;
 };
 

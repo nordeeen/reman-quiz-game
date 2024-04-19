@@ -7,7 +7,7 @@ import {
   getStarsIcons,
   playSongIfScoreMatches,
   stopPlaySong,
-  value,
+  countScore,
 } from '../../../../helpers/getIcons';
 
 const Result: FC = (): ReactElement => {
@@ -30,7 +30,7 @@ const Result: FC = (): ReactElement => {
   return (
     <>
       <div className="result-animate-container w-[100%] text-center tracking-[1px]">
-        {score !== undefined && score >= value ? (
+        {score !== undefined && score >= countScore ? (
           <FireworkComponent>
             <div className="w-[100%] pt-[10vh] bg-[#004225] py-[1.5rem] px-[.2rem]">
               <p className="text-white text-lg font-bold uppercase">
