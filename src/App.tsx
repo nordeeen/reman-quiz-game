@@ -4,6 +4,7 @@ import { UniversalProvider } from './components/contexts/UniversalContext';
 import Quizcore from './components/pages/quizGame/comps/QuizCore';
 import { QuizProvider } from './components/contexts/QuizContext';
 import Topics from './components/pages/chooseTopic/Topics';
+import NotFound from './components/readyToUseComponents/NotFound';
 
 const App: FC = (): ReactElement => {
   return (
@@ -19,6 +20,7 @@ const App: FC = (): ReactElement => {
               </QuizProvider>
             }
           ></Route>
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </UniversalProvider>
     </>
