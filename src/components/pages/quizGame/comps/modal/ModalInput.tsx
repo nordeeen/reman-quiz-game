@@ -17,7 +17,6 @@ const ModalEnteredName: FC<ModalProps> = ({
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { formData } = useContext(TopicsContext)!;
   const isDisable = formData?.trim() === '';
-  console.log('names--->', name);
 
   return (
     <div
